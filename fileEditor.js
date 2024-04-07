@@ -11,10 +11,11 @@ export const fileEditor = (filePath, oldBankNumber, newBankNumber) => {
       console.error(err);
       return;
     }
+    // меняем кодировку файла, т.к. js читает utf-8 а XML файлы у нас win1251
     const decodedXml = iconv.decode(data, "WINDOWS-1251");
 
     let doc = new DOMParser().parseFromString(decodedXml, "text/xml");
-
+    // получаем элемент в котором будем менять значение
     let fileName = doc.getElementsByTagName("ИмяФайла")[0];
 
     if (fileName.textContent.endsWith(oldBankNumber + ".XML")) {
@@ -27,7 +28,7 @@ export const fileEditor = (filePath, oldBankNumber, newBankNumber) => {
       doc.getElementsByTagName("ИмяФайла")[1].textContent =
         fileName.textContent;
     }
-
+    // получаем элемент в котором будем менять значение
     let bankNumber = doc.getElementsByTagName("НомерБанка")[0];
     if (bankNumber.textContent.endsWith(oldBankNumber)) {
       bankNumber.textContent = newBankNumber;

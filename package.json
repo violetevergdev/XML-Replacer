@@ -2,13 +2,17 @@
   "name": "fsb",
   "version": "1.0.0",
   "main": "fsb.js",
-  "type": "module",
+  "homepage": "https://violetevergdev.github.io/XML-Replacer/",
   "devDependencies": {
+    "copy-webpack-plugin": "^12.0.2",
+    "gh-pages": "^6.1.1",
+    "terser-webpack-plugin": "^5.3.10",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Violet Belyaeva",
   "license": "ISC",
